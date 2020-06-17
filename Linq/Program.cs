@@ -15,10 +15,20 @@ namespace Linq
                 new Employee {Id = 2, Name = "Hasan"}
             };
 
-            foreach (var developer in developers
-                                                .Where(x => x.Name.Length == 5)
-                                                .OrderBy(x => x.Name))
-                Console.WriteLine(developer.Name);
+            var query = 
+                from developer in developers
+                orderby developer.Name
+                where developer.Name.Length==5
+                select developer.Name;
+
+            var query2 = developers
+                .Where(x => x.Name.Length == 5)
+                .OrderBy(x => x.Name)
+                .Select(x=>x.Name)
+                .ToList();
+
+            foreach (var developer in query)
+                Console.WriteLine(developer);
         }
     }
 
