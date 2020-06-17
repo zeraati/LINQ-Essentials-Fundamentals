@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Linq
 {
@@ -7,27 +8,27 @@ namespace Linq
     {
         static void Main(string[] args)
         {
-            var developers = new []
-            {
-                new Employee {Id = 1, Name = "Ali"},
-                new Employee {Id = 2, Name = "Hasan"}
-            };
+            //Func<int, int> Sequence = x => x * x;
+            //Func<int, int, int> Plus = (x, y) => x + y;
+            //Func<int, int, int> Plus2 = (x, y) =>
+            // {
+            //     var plus2 = x + y + 2;
+            //     return plus2;
+            // };
 
-            var sales=new List<Employee>
-            {
-                new Employee{Id = 3,Name = "Hoda"}
-            };
+            int Sequence( int x) => x * x;
+            int Plus(int x, int y) => x + y;
 
-            var enumerator = sales.GetEnumerator();
-            while (enumerator.MoveNext())
-                Console.WriteLine(enumerator.Current.Id);
+            int Plus2(int x, int y)
+            {
+                var plus2 = x + y + 2;
+                return plus2;
+            }
+
+            Console.WriteLine(Sequence(2));
+            Console.WriteLine(Plus(2, 3));
+            Console.WriteLine(Plus2(2, 3));
         }
-    }
-
-    public class Employee
-    {
-        public int Id { get; set; }
-        public string Name{ get; set; }
     }
 
 }
