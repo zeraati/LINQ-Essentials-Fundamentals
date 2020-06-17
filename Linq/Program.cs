@@ -8,27 +8,24 @@ namespace Linq
     {
         static void Main(string[] args)
         {
-            //Func<int, int> Sequence = x => x * x;
-            //Func<int, int, int> Plus = (x, y) => x + y;
-            //Func<int, int, int> Plus2 = (x, y) =>
-            // {
-            //     var plus2 = x + y + 2;
-            //     return plus2;
-            // };
-
-            int Sequence( int x) => x * x;
-            int Plus(int x, int y) => x + y;
-
-            int Plus2(int x, int y)
+            var developers = new[]
             {
-                var plus2 = x + y + 2;
-                return plus2;
-            }
+                new Employee {Id = 1, Name = "Ali"},
+                new Employee {Id = 1, Name = "Ahmad"},
+                new Employee {Id = 2, Name = "Hasan"}
+            };
 
-            Console.WriteLine(Sequence(2));
-            Console.WriteLine(Plus(2, 3));
-            Console.WriteLine(Plus2(2, 3));
+            foreach (var developer in developers
+                                                .Where(x => x.Name.Length == 5)
+                                                .OrderBy(x => x.Name))
+                Console.WriteLine(developer.Name);
         }
+    }
+
+    public class Employee
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 
 }
